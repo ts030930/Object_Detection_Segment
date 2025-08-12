@@ -59,6 +59,17 @@ Object가 있을만한 후보 영역을 탐색해보는 알고리즘이다.
 왜냐하면 이때 구하는 IOU는 높은 confidenc score의 box와 비교되는 box의 iou값이기 때문에 실제 정답과 비슷한것과 상관없다.
 
 
+# map 
+
+재현율(recall)의 변화에 따른 정밀도(precision)의 값의 평균 수치로
+
+<img width="430" height="242" alt="image" src="https://github.com/user-attachments/assets/bb692d36-9a55-4f15-806a-21ce464d0e92" />
+
+여기서 재현율이란 실제값이 positive인 대상 중에서 예측과 실제값이 Positive로 일치한 데이터의 비율이고
+정밀도란 예측을 positive로 한 대상중에서 예측과 실제값이 positive로 일치하는 데이터의 비율을 의미한다.
+
+<img width="1905" height="922" alt="image" src="https://github.com/user-attachments/assets/c804d54f-34b0-48a6-8b85-56bfcb02a10a" />
+
 
 
 
