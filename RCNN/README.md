@@ -46,4 +46,42 @@ spp layer라는 개념을 도입하여 고정크기로 바꿔주는 layer를 만
 결론적으로 위완같은 형태의 구조가 만들어진다.
 
 
+# Fast RCNN
+
+<img width="923" height="528" alt="image" src="https://github.com/user-attachments/assets/2225f5e8-15c0-490a-b326-90bb266ccbae" />
+
+
+FAST RCNN은 SPP layer를 roi pooling으로 변경하고, SVN classifier로 분리되있던 것을 softmax 형태로 포함시켜 end-to-end 학습을 구현했다.
+
+## ROI(Region of Interest) Pooling
+
+
+<img width="1261" height="580" alt="image" src="https://github.com/user-attachments/assets/66001787-9e50-4480-8b05-40e9809a8d81" />
+
+Feature map 중에서 선택된 region의 영역을 고정크기의 pooling영역로 mapping하는 방식이다.
+
+<img width="1024" height="416" alt="image" src="https://github.com/user-attachments/assets/8a713eca-5cd5-4978-894f-9dafe9fec75d" />
+
+
+
+## Multi task loss
+
+<img width="811" height="425" alt="image" src="https://github.com/user-attachments/assets/6295c6fb-3235-47dd-8f0e-9d96885d50ef" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
