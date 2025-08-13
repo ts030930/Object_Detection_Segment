@@ -73,6 +73,14 @@ Feature map 중에서 선택된 region의 영역을 고정크기의 pooling영�
 
 
 
+# faster rpn
+
+<img width="808" height="344" alt="image" src="https://github.com/user-attachments/assets/46a20986-9a59-4e89-99d0-c58cf83022df" />
+
+
+fast rcnn + rpn
+
+## rpn
 
 
 
