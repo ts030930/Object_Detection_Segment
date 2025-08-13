@@ -1,4 +1,4 @@
-<img width="1484" height="731" alt="image" src="https://github.com/user-attachments/assets/6b3cf005-147e-4892-84f9-599ced054105" /># RCNN
+#RCNN
 
 ## selective search로 찾는 경우의 문제점
 
