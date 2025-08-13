@@ -60,6 +60,9 @@ FAST RCNN은 SPP layer를 roi pooling으로 변경하고, SVN classifier로 분�
 
 Feature map 중에서 선택된 region의 영역을 고정크기의 pooling영역로 mapping하는 방식이다.
 
+그림을 보면 먼저 feature map을 추출 한 뒤 ss로 얻은 regional proposal을 이용하여 필요한 부분들을 추출한다
+그리고 이제 ROI pooling을 통해 각 비율에 맞는, 그림 속에서는 2x2로 나누어 각 부분을 pooling 한다.
+
 <img width="1024" height="416" alt="image" src="https://github.com/user-attachments/assets/8a713eca-5cd5-4978-894f-9dafe9fec75d" />
 
 
