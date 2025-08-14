@@ -80,7 +80,32 @@ Feature map 중에서 선택된 region의 영역을 고정크기의 pooling영�
 
 fast rcnn + rpn
 
+# Anchor Box
+
+<img width="1223" height="776" alt="image" src="https://github.com/user-attachments/assets/783e41a0-286f-4631-aa90-5a59165f90c8" />
+
+Selective Search를 대신하기 위해 나온 개념으로 
+
+anchor box는 128,256,512 사이즈로 있고 1:1, 2:1, 1:2 비율로 존재한다.
+
+이러한 box들 총 9개를 도출된 feature map의 각 pixel마다 만들어주는건데,
+
+위 그림을 기준으로 보면 1/16이 됬으므로 50,38 pixel들에 각각 9개들의 anchor box가 생성되는것이다.
+
+
+
+
 ## rpn
+
+<img width="1248" height="563" alt="image" src="https://github.com/user-attachments/assets/f1c185d3-86c7-4205-b35d-b9f49f92ed75" />
+
+
+기존은 Selective Search로 region proposal 했지만, Selective Search를 대체하여 rpn이라는 layer를 추가했다.
+
+cnn을 통과한 feature map을 두가지 통로로 통과시켜서 network를 구성했다.
+
+그로 인해서 end to end 학습이 가능해졌다.
+
 
 
 
