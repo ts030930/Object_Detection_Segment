@@ -20,3 +20,29 @@ YOLO V1은 입력 이미지를 S x S grid로 나눈뒤 각 grid의 Cell이 하�
 
 그러면 궁금증이 여기서 Box가 두개면 20개의 요소도 각 Box마다 가져야된다고 생각되지만, 
 내부 설계에서 두개의 Box 중에서 Ground Truth와 Box가 더 많이 겹치는 Box에 해당하는 요소들로 나타내게 설계되었다.
+
+### YOLO V1 loss 
+
+<img width="1020" height="548" alt="image" src="https://github.com/user-attachments/assets/6c6052d1-a2c1-4649-a1eb-6c0625f5c4c9" />
+
+
+#### Localization loss
+
+<img width="762" height="203" alt="image" src="https://github.com/user-attachments/assets/1fed1a66-93aa-4c7c-8945-f7155a1aa676" />
+<img width="724" height="563" alt="image" src="https://github.com/user-attachments/assets/bfd34e32-d148-4753-8652-7333b838607b" />
+
+#### Confidence loss
+
+<img width="748" height="236" alt="image" src="https://github.com/user-attachments/assets/1ee7256f-7dac-4b86-901c-4d267f3f6677" />
+
+앞서 설명한 object가 존재할 확률을 예측하는 loss함수이다.
+
+두번째 식의 의미는 책임지지 않는 box인데도 object를 검출하면 안되므로 그걸 제한하는 식이다.
+
+#### Classification Loss
+
+<img width="598" height="201" alt="image" src="https://github.com/user-attachments/assets/f05f2390-303c-47dd-8506-17b2a79915de" />
+
+### NMS
+
+그 후 NMS를 반복하여 적절한 Detection을 선별해내는 것이다.
