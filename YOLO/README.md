@@ -41,8 +41,33 @@ YOLO V1은 입력 이미지를 S x S grid로 나눈뒤 각 grid의 Cell이 하�
 
 #### Classification Loss
 
+
+
+
 <img width="598" height="201" alt="image" src="https://github.com/user-attachments/assets/f05f2390-303c-47dd-8506-17b2a79915de" />
 
-### NMS
+#### NMS
+
+
+
+## YOLO V3
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 그 후 NMS를 반복하여 적절한 Detection을 선별해내는 것이다.
