@@ -36,3 +36,29 @@ Detect해야할 대상보다 background(negative)들이 훨씬 많이 영역을 
 <img width="256" height="86" alt="image" src="https://github.com/user-attachments/assets/76881576-1bfc-4502-a95d-29f3a4ea0d7d" />
 <img width="1026" height="626" alt="image" src="https://github.com/user-attachments/assets/5c4fa45e-2fba-4798-b2f3-85b52bc07182" />
 
+
+## FPN
+
+<img width="1280" height="339" alt="image" src="https://github.com/user-attachments/assets/d3717a4e-a0d9-40c0-97ac-d2dd1c50ded8" />
+<img width="754" height="882" alt="image" src="https://github.com/user-attachments/assets/23ec454a-fe44-488c-847a-3f2bc60c3187" />
+
+기본적으로 FPN은 서로 다른 크기를 가지는 Object들을 효과적으로 Detection하기 위해서 bottom up - top down 방식으로 feature map을 처리하는 방식이다.
+
+fpn layer에서 나온 layer는 conv 3,3을 진행한 결과를 classification, box regression을 진행한다.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
