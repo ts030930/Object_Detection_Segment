@@ -71,5 +71,35 @@ Object가 있을만한 후보 영역을 탐색해보는 알고리즘이다.
 <img width="1905" height="922" alt="image" src="https://github.com/user-attachments/assets/c804d54f-34b0-48a6-8b85-56bfcb02a10a" />
 
 
+# Segmentation
+
+Object Detection과 Segmentation의 차이점을 설명하자면,
+먼저 Segmentation의 용어에 대해서 알아봐야한다. 
+
+Segmentation 즉, 의미가 있는 분할이라는 뜻으로 같은 클래스더라도 분할해러 Detect하겠다는것이다.
+
+<img width="1942" height="414" alt="image" src="https://github.com/user-attachments/assets/dbf8e19d-786b-4d1c-a137-a9eb546a37bf" />
+
+그중에서도 semantic과 instance 방식이 존재하다.
+
+
+## Semantic
+
+<img width="311" height="162" alt="image" src="https://github.com/user-attachments/assets/ca1d09df-69d6-4e82-8934-ae4a986ab16c" />
+<img width="1734" height="597" alt="image" src="https://github.com/user-attachments/assets/1c3af467-2683-4a6e-8c5d-cd2b8a640068" />
+
+
+다른 말로 Pixel Wise Classification으로 불리며 Pixel 단위로 각 클래스를 정의함으로써 Segmentation을 진행하는 것이다.
+
+<img width="427" height="118" alt="image" src="https://github.com/user-attachments/assets/90efba34-eab0-4e92-b5fc-d97553cbb649" />
+
+
+
+
+
+
+
+
+
 
 
