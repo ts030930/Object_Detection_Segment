@@ -64,3 +64,68 @@ It balances **speed** and **accuracy**, making it highly suitable for applicatio
 
 
 
+## Interpreting the output
+
+YOLO V3에서는 추출된 **특징 맵(Feature Map)** 을 이용하여 1x1 Conv를 적용해 픽셀 하나하나마다
+**Cell**단위로 Object를 탐지 할 수 있게 했는데, 
+Grid size=S×S, Bounding boxes per cell=N,C = 클래스 개수 일때
+각 바운딩 박스가 예측하는 값의 차원 = D=(4+1+C)이고,
+<img width="600" height="819" alt="image" src="https://github.com/user-attachments/assets/e9ec8026-e223-472b-a36a-3bad4c954e02" />
+
+최종 Output 텐서는 다음과 같아진다.
+
+
+## Anchor Box
+
+YOLOV3에는 3개의 anchor Box가 존재한다.
+그러므로 각 Cell당 3개의 Box를 가지는 것이다.
+또 YOLO 모델은 각 Cell마다 **책임** Box를 가지는데, 이떄 GT와 IOU가 가장 높은 BOX가 책임 Box로 선정되어서 학습이 진행된다.
+
+<img width="655" height="419" alt="image" src="https://github.com/user-attachments/assets/578f7f1c-43cc-4ff1-98a7-a0ebf8a43d8b" />
+
+<img width="369" height="272" alt="image" src="https://github.com/user-attachments/assets/36ba1109-9fa8-424b-908a-b002499cea94" />
+
+
+### Objective Score & Class Confidences
+<img width="600" height="819" alt="image" src="https://github.com/user-attachments/assets/e9ec8026-e223-472b-a36a-3bad4c954e02" />
+
+-**Objective Score**
+Objectness Score는 예측된 바운딩 박스 안에 **실제로 객체가 존재할 확률**을 의미한다.  
+  - 객체와 겹치는 셀 → 값이 1에 가까움  
+  - 객체가 없는 배경 셀 → 값이 0에 가까움  
+  이 값은 확률처럼 해석되므로 **시그모이드 함수(sigmoid)** 를 거쳐 출력된다.
+
+
+-**Objective Score**
+Objectness Score는 예측된 바운딩 박스 안에 **실제로 객체가 존재할 확률**을 의미한다.  
+  - 객체와 겹치는 셀 → 값이 1에 가까움  
+  - 객체가 없는 배경 셀 → 값이 0에 가까움  
+  이 값은 확률처럼 해석되므로 **시그모이드 함수(sigmoid)** 를 거쳐 출력된다.
+
+
+-**Class Confidences**
+Class Confidence는 탐지된 객체가 각 클래스(예: 개, 고양이, 자동차, 바나나 등)에 속할 **확률 분포**를 의미합니다.  
+  - YOLOv1, v2 → Softmax를 사용해 클래스 점수를 정규화함.  
+  - YOLOv3 → Softmax 대신 **Sigmoid 함수**를 사용.
+
+이때 왜 Sigmoid를 사용하냐면, Softmax의 경우에는 전체 확률의 합이 1이라
+멀티 클래스예측에 약간의 제약이 생기기 떄문에 Sigmoid를 이용하여 유연한 구조를 채택했다고 한다.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
