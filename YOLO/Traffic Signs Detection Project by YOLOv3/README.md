@@ -85,6 +85,8 @@ YOLOV3에는 3개의 anchor Box가 존재한다.
 
 <img width="369" height="272" alt="image" src="https://github.com/user-attachments/assets/36ba1109-9fa8-424b-908a-b002499cea94" />
 
+---
+
 
 ### Objective Score & Class Confidences
 <img width="600" height="819" alt="image" src="https://github.com/user-attachments/assets/e9ec8026-e223-472b-a36a-3bad4c954e02" />
@@ -111,6 +113,7 @@ Class Confidence는 탐지된 객체가 각 클래스(예: 개, 고양이, 자�
 이때 왜 Sigmoid를 사용하냐면, Softmax의 경우에는 전체 확률의 합이 1이라
 멀티 클래스예측에 약간의 제약이 생기기 떄문에 Sigmoid를 이용하여 유연한 구조를 채택했다고 한다.
 
+---
 
 
 
@@ -121,10 +124,58 @@ Class Confidence는 탐지된 객체가 각 클래스(예: 개, 고양이, 자�
 
 
 
+## Feature Extracter (Darknet -53)
+
+YOLOv3는 **Darknet-53**이라는 새로운 Feature Extractor(백본 네트워크)를 사용합니다.  
+이 네트워크는 **Darknet-19**의 효율성과 **ResNet**의 residual connection 아이디어를 결합한 구조.
+
+
+###  네트워크 구조
+<img width="285" height="406" alt="image" src="https://github.com/user-attachments/assets/19bcc5f5-ad65-450b-b793-06180a2a6f26" />
+
+- 총 **53개의 Convolutional Layer**로 구성
+- **3×3, 1×1 Convolution** 반복
+- **Residual Block**(Shortcut Connection) 도입 → 깊은 네트워크에서도 학습 안정화
+- **Downsampling (stride=2 conv)** 으로 점진적 Feature Map 축소
 
 
 
 
+##  YOLOv3 Detection Layers
+
+YOLOv3는 한 이미지에서 **3개의 Detection Layer**를 사용하여 서로 다른 크기의 물체를 탐지합니다.  
+이를 위해 총 **9개의 Anchor Box**를 정의하고, 각 Detection Layer에서 **3개씩(mask로 지정)** 사용합니다.
+
+---
+
+###  Detection 흐름
+1. **Feature Extraction (Darknet-53)**
+   - 입력 이미지(예: 416×416)를 Backbone(Darknet-53)에 통과시켜  
+     **3개의 Feature Map**을 얻음: 52×52, 26×26, 13×13
+
+2. **Anchor Box 분배 (mask 사용)**
+   - 총 9개 anchor 중, 각 scale에서 3개씩만 사용  
+   - `mask=0,1,2` → 작은 anchor (10×13, 16×30, 33×23) → 52×52 grid (작은 물체)  
+   - `mask=3,4,5` → 중간 anchor (30×61, 62×45, 59×119) → 26×26 grid (중간 물체)  
+   - `mask=6,7,8` → 큰 anchor (116×90, 156×198, 373×326) → 13×13 grid (큰 물체)  
+
+3. **Bounding Box 예측**
+   - 각 grid cell이 **3개의 anchor box**를 기준으로 (x, y, w, h), objectness, class probability 예측  
+   - 예측 개수:
+     - 52×52×3 = 8112  
+     - 26×26×3 = 2028  
+     - 13×13×3 = 507  
+     - **총 10647 box 후보**
+
+4. **후처리**
+   - 낮은 objectness score 제거 (Thresholding)  
+   - 겹치는 박스 제거 (Non-Max Suppression, NMS)  
+   - 최종적으로 실제 물체 수만큼의 Bounding Box만 남음
+
+---
+
+
+이후에는 각 파일 폴더의 README.md에 자세히 작성했다.
 
 
 
